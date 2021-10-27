@@ -3,6 +3,7 @@ package com.faraji.opeque.core.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -12,10 +13,14 @@ import com.faraji.opeque.core.presentation.components.BottomNavigationBar
 import com.faraji.opeque.core.presentation.components.Navigation
 import com.faraji.opeque.core.presentation.ui.theme.OpequeTheme
 import com.faraji.opeque.core.presentation.ui.theme.White
+import com.google.accompanist.pager.ExperimentalPagerApi
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @ExperimentalMaterialApi
+    @ExperimentalFoundationApi
+    @ExperimentalPagerApi
     @ExperimentalComposeUiApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

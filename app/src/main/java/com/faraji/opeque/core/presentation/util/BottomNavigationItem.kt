@@ -6,14 +6,15 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.faraji.opeque.R
 import com.faraji.opeque.core.util.Screen
 
-sealed class BottomNavigationItem(var route: String, var icon: ImageVector, var title: String) {
-    object Home : BottomNavigationItem(Screen.HomeScreen.route, Icons.Default.Home, "Home")
-    object Perks : BottomNavigationItem(Screen.PerksScreen.route, Icons.Default.Star, "Perks")
+sealed class BottomNavigationItem(var route: String, var icon: Int, var title: String) {
+    object Home : BottomNavigationItem(Screen.HomeScreen.route, R.drawable.home, "Home")
+    object Perks : BottomNavigationItem(Screen.PerksScreen.route, R.drawable.diamond, "Perks")
     object Orders :
-        BottomNavigationItem(Screen.OrdersScreen.route, Icons.Default.ShoppingCart, "Orders")
+        BottomNavigationItem(Screen.OrdersScreen.route, R.drawable.shopping_cart, "Orders")
 
     object Account :
-        BottomNavigationItem(Screen.AccountScreen.route, Icons.Default.Person, "Account")
+        BottomNavigationItem(Screen.AccountScreen.route, R.drawable.account, "Account")
 }

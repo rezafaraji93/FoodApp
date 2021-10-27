@@ -3,9 +3,7 @@ package com.faraji.opeque.core.presentation.components
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.faraji.opeque.core.presentation.ui.theme.HintGray
@@ -33,7 +31,7 @@ fun BottomNavigationBar(
             BottomNavigationItem(
                 selected = currentRoute == item.route,
                 icon = {
-                    Icon(imageVector = item.icon, contentDescription = item.title)
+                    Icon(painter = painterResource(id = item.icon), contentDescription = item.title)
                 },
                 label = {
                     Text(text = item.title)

@@ -1,5 +1,7 @@
 package com.faraji.opeque.core.presentation.components
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -11,7 +13,11 @@ import com.faraji.opeque.feature_Account.presentation.AccountScreen
 import com.faraji.opeque.feature_home.presentation.HomeScreen
 import com.faraji.opeque.feature_orders.presentation.OrdersScreen
 import com.faraji.opeque.feature_perks.presentation.PerksScreen
+import com.google.accompanist.pager.ExperimentalPagerApi
 
+@ExperimentalPagerApi
+@ExperimentalFoundationApi
+@ExperimentalMaterialApi
 @ExperimentalComposeUiApi
 @Composable
 fun Navigation(
