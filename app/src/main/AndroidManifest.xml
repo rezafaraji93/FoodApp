@@ -16,6 +16,7 @@
             android:name=".core.presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Opeque.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
