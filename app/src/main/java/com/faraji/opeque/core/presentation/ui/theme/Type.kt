@@ -8,31 +8,31 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.faraji.opeque.R
 
-val roboto = FontFamily(
+val urbanist = FontFamily(
     Font(R.font.primary_bold, FontWeight.Bold),
     Font(R.font.primary_meduim, FontWeight.Medium),
     Font(R.font.primary_regular, FontWeight.Normal)
 )
 
 val Typography = Typography(
-    defaultFontFamily = roboto,
+    defaultFontFamily = urbanist,
     body1 = TextStyle(
-        fontFamily = roboto,
+        fontFamily = urbanist,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     ),
     body2 = TextStyle(
-        fontFamily = roboto,
+        fontFamily = urbanist,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
     h1 = TextStyle(
-        fontFamily = roboto,
+        fontFamily = urbanist,
         fontWeight = FontWeight.Bold,
         fontSize = 30.sp
     ),
     h2 = TextStyle(
-        fontFamily = roboto,
+        fontFamily = urbanist,
         fontWeight = FontWeight.Medium,
         fontSize = 24.sp,
     ),

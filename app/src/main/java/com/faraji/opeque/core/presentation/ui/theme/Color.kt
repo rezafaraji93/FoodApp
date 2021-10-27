@@ -3,7 +3,6 @@ package com.faraji.opeque.core.presentation.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val DarkPurple = Color(0xFF545470)
-val Purple = Color(0xFF8031b9)
 val DarkGray = Color(0xFF202020)
 val MediumGray = Color(0xFF404040)
 val LightGray = Color(0xFF606060)
