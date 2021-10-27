@@ -7,7 +7,7 @@
     <string name="search_food">Search food</string>
     <string name="near">near</string>
     <string name="santa_monica_ca">Santa Monica, CA</string>
-    <string name="item_price">$ %d delivery</string>
+    <string name="item_price">$%d delivery</string>
     <string name="preparation_time">%d min</string>
     <string name="all_restaurants">All restaurants</string>
 </resources>

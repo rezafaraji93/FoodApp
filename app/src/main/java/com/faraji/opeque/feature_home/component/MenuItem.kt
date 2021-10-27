@@ -32,6 +32,8 @@ import com.faraji.opeque.core.presentation.ui.theme.OrangeAccent
 import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.google.accompanist.placeholder.material.placeholder
 import com.google.accompanist.placeholder.shimmer
+import timber.log.Timber
+import java.text.NumberFormat
 
 @Composable
 fun MenuItem(
@@ -43,13 +45,13 @@ fun MenuItem(
 
     Box(
         modifier = modifier
-            .fillMaxSize()
-            .clickable {
-                onItemClicked()
-            }
+            .fillMaxWidth()
+            .clickable { onItemClicked() }
     ) {
         Column(
-            Modifier.fillMaxWidth(),
+            Modifier
+                .fillMaxSize()
+                .padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -81,7 +83,7 @@ fun MenuItem(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 8.dp),
+                    .padding(vertical = 8.dp, horizontal = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -96,7 +98,7 @@ fun MenuItem(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                     text = stringResource(id = R.string.item_price, "${menuItem.price}"),
+                     text = "$${menuItem.price} delivery",
                     style = MaterialTheme.typography.body2.copy(
                         color = MaterialTheme.colors.surface
                     )
@@ -104,13 +106,16 @@ fun MenuItem(
             }
             Row(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp, horizontal = 8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Row {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Icon(
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(20.dp),
                         imageVector = Icons.Default.Star,
                         tint = OrangeAccent,
                         contentDescription = "rate"

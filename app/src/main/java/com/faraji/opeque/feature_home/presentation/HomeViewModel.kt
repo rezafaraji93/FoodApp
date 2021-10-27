@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.faraji.opeque.core.domain.use_cases.GetMenuUseCase
-import com.faraji.opeque.core.presentation.components.CustomTextField
 import com.faraji.opeque.core.presentation.util.CustomTextFieldState
 import com.faraji.opeque.core.presentation.util.Resource
 import com.faraji.opeque.core.presentation.util.UiEvent
@@ -34,27 +33,26 @@ class HomeViewModel @Inject constructor(
         getMenuItems()
     }
 
-
     fun onEvent(event: HomeScreenEvent) {
         when (event) {
             is HomeScreenEvent.ClickedOnItem -> {
                 viewModelScope.launch {
                     _eventFlow.emit(
                         UiEvent.ShowSnackbar(
-                            uiText = UiText.DynamicString(event.title)
+                            uiText = UiText.DynamicString("Clicked on: ${event.title}")
                         )
                     )
                 }
-
             }
             is HomeScreenEvent.SearchedForFood -> {
-                viewModelScope.launch {
-                    _eventFlow.emit(
-                        UiEvent.ShowSnackbar(
-                            uiText = UiText.DynamicString(event.query)
+                if (event.query.isNotEmpty())
+                    viewModelScope.launch {
+                        _eventFlow.emit(
+                            UiEvent.ShowSnackbar(
+                                uiText = UiText.DynamicString("Searched for: ${event.query}")
+                            )
                         )
-                    )
-                }
+                    }
             }
             is HomeScreenEvent.EnteredQuery -> {
                 _textFieldState.value = textFieldState.value.copy(

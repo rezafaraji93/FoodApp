@@ -2,8 +2,9 @@ package com.faraji.opeque.core.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -24,7 +25,6 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.faraji.opeque.R
-import com.faraji.opeque.core.presentation.ui.theme.LightGray
 import com.faraji.opeque.core.presentation.ui.theme.TextGray
 
 @Composable
@@ -43,14 +43,16 @@ fun CustomTextField(
     onValueChanged: (String) -> Unit
 ) {
 
-    Column(
+    Box(
         modifier = modifier
             .fillMaxWidth()
+            .padding(12.dp)
             .border(
                 width = 1.dp,
                 color = TextGray,
                 shape = RoundedCornerShape(16.dp)
             )
+
     ) {
         TextField(
             colors = TextFieldDefaults.textFieldColors(
@@ -128,7 +130,5 @@ fun CustomTextField(
             } else null,
 
             )
-
-
     }
 }

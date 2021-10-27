@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.faraji.opeque.core.presentation.components.BottomNavigationBar
 import com.faraji.opeque.core.presentation.components.Navigation
 import com.faraji.opeque.core.presentation.ui.theme.OpequeTheme
+import com.faraji.opeque.core.presentation.ui.theme.White
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
                             SnackbarHost(hostState = it) { data ->
                                 Snackbar(
                                     snackbarData = data,
-                                    contentColor = MaterialTheme.colors.onBackground
+                                    contentColor = White
                                 )
                             }
                         }
