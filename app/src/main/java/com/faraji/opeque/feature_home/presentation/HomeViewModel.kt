@@ -1,14 +1,15 @@
 package com.faraji.opeque.feature_home.presentation
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.faraji.opeque.core.domain.use_cases.GetMenuUseCase
-import com.faraji.opeque.core.presentation.util.CustomTextFieldState
-import com.faraji.opeque.core.presentation.util.Resource
-import com.faraji.opeque.core.presentation.util.UiEvent
-import com.faraji.opeque.core.presentation.util.UiText
+import com.faraji.opeque.core.presentation.util.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -23,11 +24,23 @@ class HomeViewModel @Inject constructor(
     private val _textFieldState = mutableStateOf(CustomTextFieldState())
     val textFieldState = _textFieldState
 
+    private val _tabState = mutableStateOf(0)
+    val tabState: State<Int> = _tabState
+
     private val _state = mutableStateOf(HomeScreenState())
     val state: State<HomeScreenState> = _state
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
+
+    @ExperimentalFoundationApi
+    @ExperimentalComposeUiApi
+    val tabs = listOf(
+        TabItem.DeliverySlide,
+        TabItem.PickUpSlide,
+        TabItem.SortSlide,
+        TabItem.PerksSlide
+    )
 
     init {
         getMenuItems()
@@ -58,6 +71,9 @@ class HomeViewModel @Inject constructor(
                 _textFieldState.value = textFieldState.value.copy(
                     text = event.query
                 )
+            }
+            is HomeScreenEvent.OnTabClicked -> {
+                _tabState.value = event.index
             }
         }
     }

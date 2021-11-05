@@ -15,16 +15,12 @@ typealias ComposableFun = @Composable () -> Unit
 @ExperimentalFoundationApi
 sealed class TabItem(var icon: Int, var title: String, var screen: ComposableFun) {
     @ExperimentalComposeUiApi
-    data class DeliverySlide(
-        val scaffoldState: ScaffoldState
-    ) :
+    object DeliverySlide :
         TabItem(
             R.drawable.delivery,
             "Delivery",
             {
-                DeliverySlideScreen(
-                    scaffoldState = scaffoldState
-                )
+                DeliverySlideScreen()
             }
         )
 

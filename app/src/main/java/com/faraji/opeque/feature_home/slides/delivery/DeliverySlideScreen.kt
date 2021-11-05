@@ -29,24 +29,10 @@ import kotlinx.coroutines.flow.collectLatest
 @ExperimentalComposeUiApi
 @Composable
 fun DeliverySlideScreen(
-    scaffoldState: ScaffoldState,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
 
     val state = viewModel.state.value
-    val context = LocalContext.current
-
-    LaunchedEffect(key1 = true) {
-        viewModel.eventFlow.collectLatest { event ->
-            when (event) {
-                is UiEvent.ShowSnackbar -> {
-                    scaffoldState.snackbarHostState.showSnackbar(
-                        message = event.uiText.asString(context)
-                    )
-                }
-            }
-        }
-    }
 
     Box(
         modifier = Modifier
