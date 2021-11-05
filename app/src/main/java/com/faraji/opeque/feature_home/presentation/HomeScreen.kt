@@ -20,13 +20,11 @@ import com.faraji.opeque.core.presentation.components.CustomTextField
 import com.faraji.opeque.core.presentation.util.UiEvent
 import com.faraji.opeque.core.presentation.util.asString
 import com.faraji.opeque.feature_home.component.ChipItem
-import com.faraji.opeque.feature_home.slides.delivery.DeliverySlideScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
@@ -40,7 +38,6 @@ fun HomeScreen(
 
     val keyboardController = LocalSoftwareKeyboardController.current
     val textFieldState = viewModel.textFieldState.value
-    val tabState = viewModel.tabState.value
     val context = LocalContext.current
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
@@ -83,7 +80,6 @@ fun HomeScreen(
                     title = tabItem.title,
                     icon = tabItem.icon
                 ) {
-                    viewModel.onEvent(HomeScreenEvent.OnTabClicked(index))
                     scope.launch {
                         pagerState.animateScrollToPage(index)
                     }

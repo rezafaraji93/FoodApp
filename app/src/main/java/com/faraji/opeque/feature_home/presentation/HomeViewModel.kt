@@ -1,8 +1,6 @@
 package com.faraji.opeque.feature_home.presentation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.rememberScaffoldState
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -23,9 +21,6 @@ class HomeViewModel @Inject constructor(
 
     private val _textFieldState = mutableStateOf(CustomTextFieldState())
     val textFieldState = _textFieldState
-
-    private val _tabState = mutableStateOf(0)
-    val tabState: State<Int> = _tabState
 
     private val _state = mutableStateOf(HomeScreenState())
     val state: State<HomeScreenState> = _state
@@ -71,9 +66,6 @@ class HomeViewModel @Inject constructor(
                 _textFieldState.value = textFieldState.value.copy(
                     text = event.query
                 )
-            }
-            is HomeScreenEvent.OnTabClicked -> {
-                _tabState.value = event.index
             }
         }
     }
