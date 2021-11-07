@@ -1,5 +1,6 @@
 package com.faraji.opeque.feature_home.presentation
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
@@ -20,12 +21,14 @@ import com.faraji.opeque.core.presentation.components.CustomTextField
 import com.faraji.opeque.core.presentation.util.UiEvent
 import com.faraji.opeque.core.presentation.util.asString
 import com.faraji.opeque.feature_home.component.ChipItem
+import com.faraji.opeque.feature_home.component.SortSection
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@ExperimentalAnimationApi
 @ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @ExperimentalFoundationApi
@@ -38,6 +41,7 @@ fun HomeScreen(
 
     val keyboardController = LocalSoftwareKeyboardController.current
     val textFieldState = viewModel.textFieldState.value
+    val state = viewModel.state.value
     val context = LocalContext.current
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
@@ -88,11 +92,28 @@ fun HomeScreen(
             }
         }
 
+        AnimatedVisibility(
+            visible = pagerState.currentPage == 2,
+            enter = fadeIn() + slideInVertically(),
+            exit = fadeOut() + slideOutVertically()
+        ) {
+            SortSection(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                menuOrder = state.menuOrder,
+                onOrderChange = {
+                    viewModel.onEvent(HomeScreenEvent.Sort(it))
+                }
+            )
+        }
         HorizontalPager(
             count = viewModel.tabs.size,
             state = pagerState
         ) { page ->
+
             viewModel.tabs[page].screen()
         }
+
     }
 }

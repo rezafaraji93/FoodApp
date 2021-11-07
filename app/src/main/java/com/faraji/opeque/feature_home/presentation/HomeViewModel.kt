@@ -67,6 +67,13 @@ class HomeViewModel @Inject constructor(
                     text = event.query
                 )
             }
+            is HomeScreenEvent.Sort -> {
+                if (state.value.menuOrder::class == event.menuOrder::class
+                    && state.value.menuOrder.orderType == event.menuOrder.orderType
+                ) return else _state.value = state.value.copy(
+                    menuOrder = event.menuOrder
+                )
+            }
         }
     }
 
